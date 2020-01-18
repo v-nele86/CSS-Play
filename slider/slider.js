@@ -1,33 +1,27 @@
+
+//Elements in HTML
 const sliderContainer = document.getElementsByClassName('slider');
 const sliderItem = document.getElementsByClassName('slider__item');
-// console.log(sliderItem);
 
-
+//Number of slides & counter
 let slidesNum = sliderItem.length;
-// console.log(slidesNum);
-
-let firstSliderItem = sliderItem[slidesNum - 1];
-let lastSliderItem = sliderItem[0];
-console.log(firstSliderItem, lastSliderItem);
-
-let a = document.createElement('p');
-a.innerText = 'a';
-console.log(a);
-let division = document.getElementsByClassName('slider__section__wrapper');
-// division.appendChild(a);
-console.log(division);
-//document.getElementById("myList").appendChild(node);     // Append <li> to <ul> with id="myList"
 
 
-// function createEdgeSliderItems() {
-//     let node = document.createElement("LI");
-//     var textnode = document.createTextNode("Water");
-//     node.appendChild(textnode);
-//     document.getElementById("myList").appendChild(node);
-// }
+//Add first and last pseudo-slides
+// let newClone = node.cloneNode([deep]);
+let firstSliderItem = sliderItem[slidesNum - 1].cloneNode(true);
+let lastSliderItem = sliderItem[0].cloneNode(true);
+// let firstSliderItem = sliderItem[slidesNum - 1];
+// let lastSliderItem = sliderItem[0];
+console.log(lastSliderItem);
+
+
+
+// sliderContainer.insertBefore(firstSliderItem, sliderItem[0]);
+    sliderContainer.appendChild(lastSliderItem);
 
 function createEdgeSliderItems(){
-    // sliderContainer.insertBefore(firstSliderItem, sliderContainer.childNodes[0]);
+    sliderContainer.insertBefore(firstSliderItem, sliderItem[0]);
     sliderContainer.appendChild(lastSliderItem);
 }
 // createEdgeSliderItems();
@@ -36,18 +30,19 @@ function createEdgeSliderItems(){
 // sliderContainer.appendChild(lastSliderItem);
 
 
+//??????????????
 let translateValue = 1;
 
-function pritisni(){
+function sliderItemAddTransform(){
     if(translateValue >= slidesNum){
         translateValue = 1;
     };
     let translateItem = 'translateX(' + translateValue + '00%)';
     for(i=0; i < slidesNum; i++){
-        sliderItem[i].style.transform = translateItem;//moze i duzina niza * 100%
+        sliderItem[i].style.transform = translateItem;
     }
     translateValue++;
-    console.log(translateValue, translateItem);
+    // console.log(translateValue, translateItem);
 }
 
 function loopSlider(){
@@ -59,10 +54,5 @@ function loopSlider(){
 
 
 
-function sliderItemAddTransform(item){
-    // // document.getElementsByClassName('slider__item').style.transform = 'translateX(100%)';
-    // item.style.transform = 'translateX(100%)';
-
-}
 // sliderItem.forEach(sliderItemAddTransform);
 // console.log(sliderItemAddTransform);
